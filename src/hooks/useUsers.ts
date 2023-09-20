@@ -3,10 +3,6 @@ import { useEffect, useRef, useState } from 'react'
 import { getUsers } from '../services/getUsers'
 import { type User } from '../types'
 
-interface PropsApi {
-  users: User[]
-  nextCursor: number
-}
 // USING REACT QUERY FOR PRACTICE
 // export function useUsers () {
 //   const {
@@ -53,7 +49,10 @@ export function useUsers () {
         originalsUsers.current = usrs
         setUsers(usrs)
       })
-      .catch(e => { setIsError(true) })
+      .catch(e => {
+        console.log(e)
+        setIsError(true)
+      })
       .finally(() => { setIsLoading(false) })
   }, [])
 
