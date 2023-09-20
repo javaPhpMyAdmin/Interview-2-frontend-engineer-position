@@ -15,6 +15,7 @@ specifiers:
   eslint-plugin-react: ^7.33.2
   eslint-plugin-react-hooks: ^4.6.0
   eslint-plugin-react-refresh: ^0.4.3
+  pullup: ^1.1.0
   react: ^18.2.0
   react-dom: ^18.2.0
   typescript: ^5.2.2
@@ -22,6 +23,7 @@ specifiers:
 
 dependencies:
   '@tanstack/react-query': 4.35.3_biqbaboplfbrettd7655fr4n2y
+  pullup: 1.1.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
 
@@ -2255,6 +2257,11 @@ packages:
       object-assign: 4.1.1
       react-is: 16.13.1
     dev: true
+
+  /pullup/1.1.0:
+    resolution: {integrity: sha512-++1MM3pAt19ehtKuzyawUy5mDInnrpsX4LxnGfz+eUVhe1LvwHtllT2mcuML4pI8n4ZH5bL+Ewjsi5WAer5mow==}
+    engines: {node: '>=10'}
+    dev: false
 
   /punycode/2.3.0:
     resolution: {integrity: sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==}
