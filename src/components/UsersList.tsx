@@ -1,13 +1,13 @@
 import { SortBy, type User } from '../types.d'
 
 interface Props {
-  users: User[]
+  users?: User[]
   showColors: boolean
   handleDelete: (email: string) => void
   changeSorting: (sort: SortBy) => void
 }
 
-export function UsersList({ users, showColors, changeSorting, handleDelete }: Props) {
+export function UsersList ({ users, showColors, changeSorting, handleDelete }: Props) {
   const handleClick = (email: string) => { handleDelete(email) }
 
   return (
