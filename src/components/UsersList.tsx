@@ -14,11 +14,11 @@ export function UsersList ({ users, showColors, changeSorting, handleDelete }: P
     <table>
       <thead>
         <tr>
-          <th >Foto</th>
-          <th style={{ cursor: 'pointer' }} onClick={() => { changeSorting(SortBy.NAME) }}>Nombre</th>
-          <th style={{ cursor: 'pointer' }} onClick={() => { changeSorting(SortBy.LAST) }}>Apellido</th>
-          <th style={{ cursor: 'pointer' }} onClick={() => { changeSorting(SortBy.COUNTRY) }}>Pais</th>
-          <th>Acciones</th>
+          <th >Picture</th>
+          <th style={{ cursor: 'pointer' }} onClick={() => { changeSorting(SortBy.NAME) }}>Name</th>
+          <th style={{ cursor: 'pointer' }} onClick={() => { changeSorting(SortBy.LAST) }}>Surname</th>
+          <th style={{ cursor: 'pointer' }} onClick={() => { changeSorting(SortBy.COUNTRY) }}>Country</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -41,7 +41,7 @@ export function UsersList ({ users, showColors, changeSorting, handleDelete }: P
                   {user.location.country}
                 </td>
                 <td>
-                  <button onClick={() => { handleClick(user.email) }}>Borrar</button>
+                  <button onClick={() => { handleClick(user.email) }}>Delete</button>
                 </td>
               </tr>
 

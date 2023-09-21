@@ -32,14 +32,14 @@ export function Main ({
       {isError && <p>Ha habido un error</p>}
       {!isLoading && !isError && users?.length === 0 && <p>No hay usuarios</p>}
       {
-        !isLoading && !isError && !noMoreResults && <button onClick={loadMoreUsers}>Cargar mas datos</button>
+        !isLoading && !isError && !noMoreResults && <button onClick={loadMoreUsers}>Load more users</button>
 
       }
       {
-        !isLoading && !isError && noMoreResults && <p>No hay mas resultados</p>
+        !isLoading && !isError && noMoreResults && <p>No more results to show</p>
       }
       {
-        !isLoading && !isError && noMoreResults && filterCountry === null && <a href='#'>Ir al inicio</a>
+        !isLoading && !isError && noMoreResults && filterCountry === null && <a href='#'>Go up</a>
       }
     </main>
   )

@@ -11,12 +11,12 @@ interface HeaderProps {
 export function Header ({ toggleColors, toggleSortByCountry, handleRetriveUsers, sorting, setFilterCountry }: HeaderProps) {
   return (
     <header>
-      <button onClick={toggleColors}>Colorear filas</button>{' '}
+      <button onClick={toggleColors}>Color rows</button>{' '}
       <button onClick={toggleSortByCountry}>
-        {sorting === SortBy.COUNTRY ? 'No ordenar por pais' : 'Ordenar por pais'}
+        {sorting === SortBy.COUNTRY ? 'Undo' : 'Order by country'}
       </button>{' '}
-      <button onClick={handleRetriveUsers}>Recuperar usuarios</button>
-      <input placeholder='Filtra por pais' onChange={(e) => { setFilterCountry(e.target.value) }} />
+      <button onClick={handleRetriveUsers}>Retrieve deleted users</button>
+      <input placeholder='Filter by country' onChange={(e) => { setFilterCountry(e.target.value) }} />
     </header>
 
   )
