@@ -1,4 +1,4 @@
-API for requests: https://randomuser.me/.
+API for requests: https://randomuser.me/api/.
 
 You need to follow this steps:
 
@@ -11,4 +11,8 @@ You need to follow this steps:
 [x] Handle any potential errors that may occur.
 [x] Implement a feature that allows the user to filter the data by country.
 [x] Avoid sorting users again the data when the user is changing filter by country.
-[] Sort by clicking on the column header.
+[x] Sort by clicking on the column header.
+
+Bonus:
+- Use react hooks and custom hooks.
+- Refactor de code.
