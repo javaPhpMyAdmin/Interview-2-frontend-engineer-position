@@ -31,12 +31,27 @@ import { type User } from '../types'
 //   }
 // }
 
+interface UsersProps {
+  usersFromApi: User[]
+  nextCursor?: number
+}
+
 export function useUsers () {
   const [users, setUsers] = useState<User[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [noMoreResults, setNoMoreResults] = useState(false)
 
   const originalsUsers = useRef<User[]>([])
+
+  const getMoreUsers = () => {
+    setCurrentPage(currentPage + 1)
+  }
+
+  const loadUsers = (people: User[]) => {
+    setUsers(people)
+  }
 
   const retrieveUsers = () => {
     setUsers(originalsUsers.current)
@@ -44,23 +59,26 @@ export function useUsers () {
 
   useEffect(() => {
     setIsLoading(true)
-    getUsers()
-      .then(usrs => {
-        originalsUsers.current = usrs
-        setUsers(usrs)
+    getUsers(currentPage)
+      .then((data: UsersProps) => {
+        originalsUsers.current = [...users, ...data.usersFromApi]
+        if (data.nextCursor === undefined) { setNoMoreResults(true) }
+        setUsers([...users, ...data.usersFromApi])
       })
       .catch(e => {
         console.log(e)
         setIsError(true)
       })
       .finally(() => { setIsLoading(false) })
-  }, [])
+  }, [currentPage])
 
   return {
     users,
-    setUsers,
+    loadUsers,
     isLoading,
     isError,
-    retrieveUsers
+    retrieveUsers,
+    getMoreUsers,
+    noMoreResults
   }
 }
