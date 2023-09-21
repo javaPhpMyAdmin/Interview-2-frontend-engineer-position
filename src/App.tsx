@@ -26,7 +26,10 @@ function App () {
     users,
     loadUsers,
     retrieveUsers,
-    getMoreUsers
+    getMoreUsers,
+    noMoreResults,
+    isLoading,
+    isError
   } = useUsers()
 
   const toggleColors = () => {
@@ -94,11 +97,15 @@ function App () {
           setFilterCountry={setFilterCountry}
         />
         <Main
+          isLoading={isLoading}
+          isError={isError}
+          noMoreResults={noMoreResults}
           loadMoreUsers={loadMoreUsers}
           showColors={showColors}
           sortedUsers={sortedUsers}
           handleDelete={handleDelete}
           handleSortBy={handleSortBy}
+          filterCountry={filterCountry}
         />
     </div>
   )

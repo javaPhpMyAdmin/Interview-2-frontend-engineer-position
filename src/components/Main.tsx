@@ -1,4 +1,3 @@
-import { useUsers } from '../hooks/useUsers'
 import { type SortBy, type User } from '../types.d'
 import { UsersList } from './UsersList'
 
@@ -7,8 +6,11 @@ interface MainProps {
   handleDelete: (email: string) => void
   sortedUsers: User[]
   showColors: boolean
-  filterCountry?: string
+  filterCountry: string | null
   loadMoreUsers: () => void
+  noMoreResults: boolean
+  isLoading: boolean
+  isError: boolean
 }
 
 export function Main ({
@@ -17,9 +19,11 @@ export function Main ({
   sortedUsers,
   showColors,
   filterCountry,
-  loadMoreUsers
+  loadMoreUsers,
+  noMoreResults,
+  isLoading,
+  isError
 }: MainProps) {
-  const { users, isLoading, isError, noMoreResults } = useUsers()
   return (
     <main>
       <UsersList
@@ -28,18 +32,25 @@ export function Main ({
         users={sortedUsers}
         showColors={showColors}
       />
-      {isLoading && <strong>Cargando...</strong>}
-      {isError && <p>Ha habido un error</p>}
-      {!isLoading && !isError && users?.length === 0 && <p>No hay usuarios</p>}
+      {isLoading && <strong>Loading...</strong>}
+      {isError && <p>Something went wrong</p>}
+      {!isLoading && !isError && sortedUsers?.length === 0 && <p>No users to show</p>}
       {
         !isLoading && !isError && !noMoreResults && <button onClick={loadMoreUsers}>Load more users</button>
 
       }
       {
-        !isLoading && !isError && noMoreResults && <p>No more results to show</p>
+        !isLoading && !isError && noMoreResults && sortedUsers?.length !== 0 && filterCountry === null && <p>No more results to show</p>
+      }
+      {
+        !isLoading && !isError && noMoreResults && sortedUsers?.length !== 0 && filterCountry === '' && <p>No more results to show</p>
       }
       {
         !isLoading && !isError && noMoreResults && filterCountry === null && <a href='#'>Go up</a>
+      }
+
+      {
+        !isLoading && !isError && noMoreResults && filterCountry === '' && <a href='#'>Go up</a>
       }
     </main>
   )
